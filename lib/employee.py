@@ -187,4 +187,10 @@ class Employee:
 
     def reviews(self):
         """Return list of reviews associated with current employee"""
-        pass
+        from review import Review
+        employee_reviews = []
+        all_reviews = Review.get_all()
+        for review in all_reviews:
+            if review.employee_id == self.id:
+                employee_reviews.append(review)
+        return employee_reviews
